@@ -4,7 +4,7 @@ var fs = require('fs');
 var server = http.createServer(function(request,response) {
 	if (request.url === '/index' || request.url==='/'){
         response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-        var content = fs.createReadStream(__dirname + "/view/index.html", "utf8");
+        var content = fs.createReadStream(__dirname + "/views/index.html", "utf8");
         content.pipe(response);
     }else{
 		response.writeHead(200,{'Content-type' : 'text/planted'})
