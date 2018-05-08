@@ -2,9 +2,15 @@
 var http = require('http');
 var fs = require('fs');
 var server = http.createServer(function(request,response) {
-	response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
-	var content = fs.createReadStream(__dirname + "/index.html", "utf8");
-	content.pipe(response);
+	if (request.url === '/index' || request.url==='/'){
+        response.writeHead(200, {'Content-Type':'text/html; charset=utf-8'});
+        var content = fs.createReadStream(__dirname + "/view/index.html", "utf8");
+        content.pipe(response);
+    }else{
+		response.writeHead(200,{'Content-type' : 'text/planted'})
+		var content = "no resolver";
+		response.write(content);
+	}
 
 });
 
